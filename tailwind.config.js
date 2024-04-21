@@ -7,9 +7,11 @@ export default {
         sans: ['Roboto', 'sans-serif'],
       },
       colors: {
+        background_dark: '#1a1a1a',
         background: '#222222',
-        detail: '#F2F1F2',
         background_light: '#333333',
+        detail: '#F2F1F2',
+        detail_dark: '#e7e4e7',
         active: '#444444'
       }
     },

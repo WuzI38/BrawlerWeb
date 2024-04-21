@@ -13,7 +13,7 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(null);
 
   const navigation = [
-    { name: 'Home', href: '/home' },
+    { name: 'Home', href: '/' },
     { name: 'Cards', href: '/cards' },
   ];
 
@@ -32,15 +32,21 @@ const Navbar = () => {
 
 
   return (
-    <Disclosure as="nav" className="bg-background_light">
+    <Disclosure as="nav" className="fixed inset-x-0 bg-background_light">
       {({ }) => (
         <>
           <div className="p-4 flex items-center justify-between">
             <div className="flex items-center">
+            <Link 
+              key={navigation[0].name}
+              to={navigation[0].href} 
+              className="flex items-center"
+            >
               <img src={logo} alt="logo" className="h-8 w-8" />
               <div className="ml-2 mr-4">
                 <h1 className="text-detail text-lg font-bold">Brawler</h1>
               </div>
+            </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {navigation.map((item) => (
@@ -52,8 +58,45 @@ const Navbar = () => {
                       {item.name}
                     </Link>
                   ))}
+                  <div className="relative">
+                    <button onClick={toggleCommandersVisibility} className="text-detail hover:bg-active px-3 py-2 rounded-md text-sm font-medium">
+                      Commanders
+                    </button>
+                    {isCommandersVisible && (
+                      <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-detail ring-1 ring-black ring-opacity-5">
+                        <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                          {Object.keys(colors).map((key) => (
+                            <div key={key} className="relative">
+                              <div className="text-background hover:bg-detail_dark block px-3 py-2 rounded-md text-base font-medium">
+                                <button className="flex justify-between w-full items-center" onClick={() => toggleVisibility(key)}>
+                                  {key}
+                                </button>
+                              </div>
+                              {isVisible && activeMenu === key && (
+                                <div className={`submenu ${isVisible ? 'visible' : 'hidden'} leading-7 text-left text-sm font-thin mx-auto`}>
+                                  {Object.entries(colors[key]).map(([colorKey, colorValue]) => (
+                                    <Link
+                                      key={colorKey}
+                                      to={navigationCommanders(colorKey)}
+                                      className="text-background hover:bg-detail_dark block px-3 py-2 rounded-md text-base font-medium"
+                                    >
+                                      <span style={{ display: 'flex', alignItems: 'center' }}>
+                                        {colorKey.split('').map(char => (
+                                          <img src={images[char]} alt={char} style={{height: '1em', width: '1em'}} />
+                                        ))}
+                                        {<p className="ml-2">{colorValue}</p> }
+                                      </span>
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                            
               </div>
             </div>
             <div className="-mr-2 flex md:hidden">

@@ -32,11 +32,8 @@
         "brg": "Jund"
     },
     "4+ Color": {
-        "wubr": "Yore-Tiller",
         "wubg": "Witch-Maw",
         "wurg": "Ink-Treader",
-        "wbrg": "Dune-Brood",
-        "ubrg": "Glint-Eye",
         "wubrg": "5 Color"
     }
 }
