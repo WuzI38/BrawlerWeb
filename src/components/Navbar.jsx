@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
-import logo from '../assets/BrawlerLogoWhite.svg';
-import colors from '../assets/colors.json';
-import images from '../assets/images.json';
+import logo from '../assets/images/BrawlerLogoWhite.svg';
+import colors from '../assets/json/colors.json';
+import images from '../assets/json/images.json';
 
 const Navbar = () => {
 
@@ -32,7 +32,7 @@ const Navbar = () => {
 
 
   return (
-    <Disclosure as="nav" className="fixed inset-x-0 bg-background_light">
+    <Disclosure as="nav" className="fixed inset-x-0 bg-background_light" id="navbar">
       {({ }) => (
         <>
           <div className="p-4 flex items-center justify-between">

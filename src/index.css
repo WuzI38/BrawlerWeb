@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .outlet-padding {
+      padding-top: var(--navbar-height, 0px);
+    }
+}
